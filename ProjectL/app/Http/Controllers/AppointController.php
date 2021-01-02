@@ -35,7 +35,7 @@ class AppointController extends Controller
                 'Appointment_No' => $request->get('Appointment_No')
             ]);
             $appointment->save();
-            return view('blade-scafolding.receptionistPage')->with('success', 'Appointment saved!')->with('msg',"Appointmen Added");
+            return view('blade-scafolding.receptionist.receptionistPage')->with('success', 'Appointment saved!')->with('msg',"Appointmen Added");
         }
     
         public function create()

@@ -46,7 +46,7 @@ class FrontendController extends Controller
 
     /*  receptionist Page*/
     public function receptPage(){
-        return view('blade-scafolding.receptionistPage')->with('msg',"");
+        return view('blade-scafolding.receptionist.receptionistPage')->with('msg',"");
     }
     /*End receptionist Page*/
      

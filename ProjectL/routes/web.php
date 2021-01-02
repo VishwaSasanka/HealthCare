@@ -8,7 +8,6 @@ use App\Http\Controllers\AppointController;
 Route::get('/', function () {
     return view('blade-scafolding.home');
 });
-/*Route::post('/ajax',[FrontendController::class,'ajax']);*/
 
 Route::get('/login',[FrontendController::class,'loginpage']);
 Route::get('/regi',[FrontendController::class,'Registrationpage']);
@@ -28,6 +27,9 @@ Route::get('/docpage',[FrontendController::class,'afterLoginDoctoPage']);
 
   /*  receptionist Page*/
 Route::get('/recPage',[FrontendController::class,'receptPage']); 
+Route::get('/appDet', function () {
+    return view('blade-scafolding.receptionist.appointmentDetail');
+});
   /*End receptionist Page*/
 
 /*  Pharmacy Page*/
