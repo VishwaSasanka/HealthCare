@@ -1,5 +1,5 @@
-
 @extends('blade-scafolding.layout.content')
+
 
 @section('content')
 
@@ -12,15 +12,56 @@
         margin-right: 150px;
     }
   }
- 
+  @media(min-width: 800px){
+      td button{ 
+        width: 80%;
+      }
+  }
+    #ppage button {
+    background-color: blue;
+    color: white;
+    border: 0 solid;
+    margin: 10px 10px 10px 10px;
+}
+#ppage #phar_table{
+    background-color: white;
+    color: black;
+    outline: 1px solid;
+    outline-color: black;
+}
+#ppage table{
+    color: black;
+} 
+#ppage #tbl tr{
+    border-bottom-style: solid;
+}
+#ppage h1 {
+    font-weight: bold;
+}
+#ppage {
+    height: 500px;
+}
+@media(max-width: 852px){
+    #ppage {
+        height: 600px;
+    }
+}
+@media (min-width: 1200px) {
+        #ppage h1 {
+        color: #120A2A;
+        backdrop-filter: blur(5px);
+        
+    }
+}
 </style>
-<div id="docpage" class="container">
+
+<div id="ppage" class="container">
     <div class="text-center">
         <h1>Life Care Pharmacy</h1>
     </div>
     <div id="patbutton" style="right: 1px;">
         <div id="patbt">
-            <a id="stock" href="/patHistory"><button class="btn btn right">stock</button></a>
+            <a id="stock" href="/medicine_stocks"><button class="btn btn right">stock</button></a>
             <a id=""><button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn right">Invoice</button></a>
             <a href="/login" style="position: absolute; right: 10px;"><span class="glyphicon glyphicon-log-out"></span>  Log-out</a>
         </div>
@@ -38,30 +79,30 @@
                 <table id="phar_table" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th width="20%">Product No</th>
-                            <th width="30%">Description</th>
-                            <th width="20%">Price</th>
-                            <th width="10%">Quantity</th>
-                            <th width="20%">amount</th>
+                            <th width="30%">Medicine Name</th>
+                            <th width="20%">Quantity</th>
+                            <th width="20%">Unit Price</th>
+                            <th width="20%">Amount</th>
+                            <th width="10%">action</th>
                         </tr>
                         <tr>
-                            <td>hgw</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td style="text-align: center;"><button class="btn" style="margin: 0 0 0 0;">Add</button></td>
                         </tr>
                     </thead>
                  </table>
                  
             </div>
             <div class="row">                        
-                <div id="total" class="col-lg-4 col-sm-5 ml-auto" class="right">
-                            <table class="table table-clear" style="outline-color: white;">
+                <div class="col-lg-4 col-sm-5 ml-auto" class="right">
+                            <table id="tbl" class="table table-clear">
                                 <tbody>
                                     <tr>
                                         <td class="left"><strong>Subtotal</strong></td>
-                                        <td class="right">jhh</td>
+                                        <td class="right"></td>
                                     </tr>
                                     <tr>
                                         <td class="left"><strong>Discount (10%)</strong></td>
