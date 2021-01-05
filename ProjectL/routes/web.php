@@ -30,6 +30,9 @@ Route::get('/recPage',[FrontendController::class,'receptPage']);
 Route::get('/appDet', function () {
     return view('blade-scafolding.receptionist.appointmentDetail');
 });
+Route::get('/ttable', function () {
+    return view('blade-scafolding.receptionist.timeTable');
+});
   /*End receptionist Page*/
 
 /*  Pharmacy Page*/

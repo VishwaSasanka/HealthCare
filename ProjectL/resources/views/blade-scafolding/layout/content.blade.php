@@ -27,7 +27,6 @@
       </div>
       <!-- end copyrights -->
 
-      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       @include('blade-scafolding.partials.script')
    </body>
 </html>
