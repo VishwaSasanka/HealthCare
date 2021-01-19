@@ -24,17 +24,26 @@ class FrontendController extends Controller
     public function channelDetails(){
     	return view('blade-scafolding.channelDet');
     }
-    public function afterLoginPatientPage(){
-    	return view('blade-scafolding.patientpage');
+    public function afterLoginPatientPage($id){
+      
+        $details=DB::table('patients')->where('Pat_id',$id)->first();
+        $c=DB::table('periods')->get();
+        return view('blade-scafolding.patientpage')->with('det',$details)->with('messege',"")->with('c',$c);
+    	
     }
-    public function patientRecordPage(){
-        return view('blade-scafolding.patientRecord');
+    public function patientRecordPage($id){
+        $details=DB::table('patients')->where('Pat_id',$id)->first();
+        $rec=DB::table('prescriptions')->where('Pat_id',$id)->get();
+        return view('blade-scafolding.patientRecord')->with('det',$details)->with('rec',$rec);
     }
     
 
     /*  Doctor Page*/
-    public function afterLoginDoctoPage(){
-        return view('blade-scafolding.doctorPage');
+    public function afterLoginDoctoPage($id){
+        $details=DB::table('doctors')->where('Doctor_ID',$id)->first();
+    
+        return view('blade-scafolding/doctorPage')->with('det',$details)->with('messege',"");
+     
     }
     public function addPrescriptionPage($t){
         $c=DB::table('doctors')->where('Doctor_ID',$t)->first();
@@ -45,7 +54,7 @@ class FrontendController extends Controller
     
 
     /*  receptionist Page*/
-    public function receptPage(){
+     public function receptPage(){
         return view('blade-scafolding.receptionist.receptionistPage')->with('msg',"");
     }
     /*End receptionist Page*/
@@ -56,5 +65,14 @@ class FrontendController extends Controller
         return view('blade-scafolding.pharmasist');
     }
     /* End Pharmacy Page*/
+
+    /*home booking*/
+    public function booking($bid){
+        $p=DB::table('patients')->get();
+        $np1=count($p)+1;
+        $id="Pat".$np1;
+       return view('blade-scafolding/registreAfterBook')->with('bid',$bid)->with('msg',"")->with('id',$id);
+     
+    }
    
 }

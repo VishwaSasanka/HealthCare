@@ -20,26 +20,38 @@
                 <table id="doctor_data" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th width="25%">Patient Name</th>
-                            <th width="10%">Doctor Name</th>
+
+                            <th width="10%">Doctor Id</th>
                             <th width="10%">Date</th>
-                            <th width="25%">Diagnostic</th>
+                            <th width="25%">Diagnosia</th>
                             <th width="30%">Description</th>
                         </tr>
-                        <tr>
-                            <td>a</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @if($p=session()->get('p'))
+                                             <?php $record=$p; ?>
+                                             @else
+                                             <?php $record=$rec; ?>
+                                             @endif
+                                             <tbody>
+                                                  @if(count($record) > 0)
+                                                
+                                                  @foreach($record as $re)
+                                               
+
+
+                                    <tr>
+                                        <td>{{$re->Doctor_ID}}</td>
+                                        <td>{{$re->created_at}}</td>
+                                        <td>{{$re->Diagnosis}}</td>
+                                        <td>{{$re->Description}}</td>
+                                      
+                                    </tr>
+                                   
+                                                  @endforeach
+                                                  @else
+                                                  <tr>
+                                                       <td colspan="7"><h3 style=" color:black;text-align: center;">No Time Periods Available</h3></td>
+                                                  </tr>
+                                                  @endif
                     </thead>
                  </table>
             </div>

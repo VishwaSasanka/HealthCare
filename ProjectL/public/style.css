@@ -328,14 +328,14 @@ a img.aligncenter {
 @media(max-width: 1000px) {
     header #collapsable-nav {
         margin-top: 60px;
-        background-color: #F8E0F7;
+        background-color: #7CB9E8;
         text-align: center;
     }
     header #collapsable-nav #l1{
         border-top: 1px solid white;
     }
     header #collapsable-nav li:hover{
-        background-color: #F6CED8;
+        background-color: #0048BA;
     }
     header #collapsable-nav ul{
         border-top: 1px solid white;
@@ -353,14 +353,22 @@ a img.aligncenter {
         margin-top: 15px;
         margin-right: 45px;
     }
+    header #collapsable-nav li:hover{
+        background-color: #CCD4FF;
+    }
     header #collapsable-nav #l1{
-        background-color: #F5A9BC;
+        border: 1px solid;
+        border-radius: 20px;
     }
     header #collapsable-nav #l2{
-        background-color: #F6CED8;
+        border: 1px solid;
+        border-radius: 20px;
+        margin-left: 20px;
     }
     header #collapsable-nav #l3{
-        background-color: #A4A4A4;
+        border: 1px solid;
+        border-radius: 20px;
+        margin-left: 20px;
     }
 }
 
@@ -883,9 +891,14 @@ body{
   background-color: #17a2b8;
   height: 100vh;
 }
-@media (min-width: 1200px) {
+@media (min-width: 990px) {
     #home .container #home-row #home-column #home-box {
-        margin-left: 50%;
+        margin-left: 90%;
+    }
+}
+@media (max-width: 990px) and (min-width: 670px) {
+    #home .container #home-row #home-column #home-box {
+        margin-left: 40%;
     }
 }
 #home .container #home-row #home-column #home-box {
@@ -1663,7 +1676,7 @@ label {
         width: 70%;
         top: 120px;
         left: -1000px;
-        background-color: #00FF80;
+        /*background-color: #00FF80;*/
         position: absolute;
         opacity: 3;
         vertical-align: middle;
@@ -1675,7 +1688,7 @@ label {
         width: 70%;
         top: 120px;
         left: -1000px;
-        background-color: #00FF80;
+        /*background-color: #00FF80;*/
         position: absolute;
         opacity: 3;
         vertical-align: middle;
@@ -1686,7 +1699,7 @@ label {
     #myDIV2 {
         top: 99px;
         position: absolute;
-        background-color: #00FF80; 
+        /*background-color: #00FF80;*/ 
         width: 70%; 
         vertical-align: middle;
         height: 410px;
@@ -1715,7 +1728,7 @@ label {
     #myDIV2 {
         top: 99px;
         position: absolute;
-        background-color: #00FF80; 
+        /*background-color: #00FF80;*/ 
         width: 70%; 
         height: 410px;
         left: 200px;
@@ -1725,7 +1738,7 @@ label {
     #myDIV2 {
         top: 99px;
         position: absolute;
-        background-color: #00FF80; 
+        /*background-color: #00FF80;*/ 
         width: 70%; 
         vertical-align: middle;
         height: 410px;

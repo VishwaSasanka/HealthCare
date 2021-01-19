@@ -24,7 +24,7 @@
             
       </footer>
 
-      <div class="copyright-area wow fadeIn"  style="background:#C71585;">
+      <div class="copyright-area wow fadeIn">
          @include('blade-scafolding.partials.copyright')
       </div>
       <!-- end copyrights -->

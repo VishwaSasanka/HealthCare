@@ -13,12 +13,20 @@ class CreatePeriodsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('periods', function (Blueprint $table) {
-            $table->string('Period_ID');
+            $table->id('Period_ID');
             $table->string('Time_Period');
-            $table->primary('Period_ID');
+        
             $table->timestamps();
+            $table->string('Doctor_ID');
+            $table->string('Specialization');
+            $table->string('Doctor_Name');
+            $table->date('Date');
+            $table->integer('No_of_Patients');
+            $table->foreign('Doctor_ID')->references('Doctor_ID')->on('doctors');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

@@ -4,15 +4,38 @@
 @section('content')
 <style type="text/css">
   body {
-    background-image:url('<?php echo url('/'); ?>/images/background/appo.jpg');
+    background-image:url('<?php echo url('/'); ?>/images/background/pat3.png');
     background-attachment: fixed;
     background-size: cover;
   }
+  @media(max-width: 670px){
+        table{
+            background-color: white;
+        }
+    }
+    @media(min-width: 995px){
+      #photo{
+       position: absolute;
+        margin-left: 35%;
+      }
+    }
+    @media(max-width: 995px) and (min-width: 669px){
+      #photo{
+       position: relative;
+       margin-left: 50%;
+      }
+    }
+    @media(max-width: 669px){
+      #photo{
+       position: relative;
+       margin-left: 30%;
+      }
+    }
 </style>
 
-<div id="patbutton" class="right" style="margin-right: 12%;">
+<div id="patbutton" class="right" style="margin-right: 12%; background-color: transparent;">
     <div id="patbt">
-    <a href="/patRecord"><button class="btn">My Records</button></a>
+    <a href="{{route('patRecord',$det->Pat_id)}}"><button class="btn">My Records</button></a>
     <button class="btn" data-toggle="modal" data-target="#exampleModalCenter1">My Details</button>
     <a href="/login"><span class="glyphicon glyphicon-log-out"></span>  Log-out</a>
     </div>
@@ -21,33 +44,112 @@
         <div class="container">
             <div id="home-row" class="row justify-content-center align-items-center">
                 <div id="home-column" class="col-md-6">
+
+                  <div id="photo" style=" margin-top: 100px;">
+                    <h2>Profile Photo</h2>
+                    <img class="img" src="<?php echo url('/'); ?>/images/profile-photo/patphoto.png" height="120" width="130" alt="avatar" style=" cursor: pointer;">
+                    <input type="file" name="image" accept="image/*" id="file" style="display: none;">
+                    <p>
+                        <label for="file" style="cursor: pointer;" >Upload Image</label>
+                    </p>
+                    <img id="output" width="200">
+                 </div>
+
                     <div id="home-box" class="col-md-12">
-                        <form id="home-form" class="form" action="/specialization" method="post">
+                    <form id="home-form" class="form" method="post" style="margin-top: 10px;" action="/docsearch">
+                        {{csrf_field()}}
+
                             <div class="form-group">
-                                <label for="" class="text-info" style="color: white;">Specialization:</label><br>
-                                <select id="inputState" class="form-control">
-                                    <option selected>any</option>
-                                    <option> </option>
-                                    <option> </option>
-                                </select>
+                                <label for="" class="text-info">Specialization:</label><br>
+                                <input type="text" name = "specialization" id="ingname" class="form-control" list="ingredients">
+                    <datalist id="ingredients">
+                    <option value="">
+                         <option value="physian">
+                         <option value="orthopisian">
+                         <option value="surgereon">
+                         
+                    </datalist>
+
+                              
                             </div>
                             
                             <div class="form-group">
-                                <label for="date" class="date-info" style="color: white;">Date:</label><br>
+                                <label for="date" class="date-info">Date:</label><br>
                                 <input type="date" name="date" id="date" class="form-control">
                             </div>
-
+                            <div id="home-button">
+                                <!-- <input type="submit" class="button" name=""> -->
+                                <button class="btn btn-left" type="submit" >SEARCH</button>
+                            </div>
+                            
                         </form>
 
-                        <div id="home-button">
-                                <!-- <input type="submit" class="button" name=""> -->
-                                <button class="btn btn-left" type="submit" data-toggle="modal" data-target="#exampleModalCenter" style="margin-top: 30px;">SEARCH</button>
-                        </div>
+                           
+                            <table class="table table-bordered" style="color: black;">
+                                <thead>
+                                    <tr>
+                                        <th width="60%">Doctor name</th>
+                                        <th width="20%">Date</th>
+                                        <th width="20%">Time</th>
+                                    </tr>
+                                 
+                                                  @if($p=session()->get('p'))
+                                             <?php $period=$p; ?>
+                                             @else
+                                             <?php $period=$c; ?>
+                                             @endif
+                                             <tbody>
+                                                  @if(count($period) > 0)
+                                                  <?php $no = 0; ?>
+                                                  @foreach($period as $pe)
+                                               
+
+
+                                    <tr>
+                                        <td>{{$pe->Doctor_Name}}</td>
+                                        <td>{{$pe->Date}}</td>
+                                        <td>{{$pe->Time_Period}}</td>
+                                        <td><a href="{{route('book',['id'=>$pe->Period_ID,'patid'=>$det->Pat_id])}}"class="book"><button class="btn print" >book </button></a></td>
+                                    </tr>
+                                   
+                                                  @endforeach
+                                                  @else
+                                                  <tr>
+                                                       <td colspan="7"><h3 style=" color:black;text-align: center;">No Time Periods Available</h3></td>
+                                                  </tr>
+                                                  @endif
+
+
+                                </thead>
+                            </table>
 
                     </div>
                 </div>
             </div>
-
+            <br>  <br>  <br>  <br>  <br>    
+            <div class="text-center">
+              <h1 style="color: white;">Your Reservations</h1>
+              <table class="table" style="color: black;">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Doctor Name</th>
+                      <th>Time</th>
+                      <th>Appointment No</th>
+                      <th>Action</th>
+                    </tr>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="book"><button class="btn print">Delete </button></a></td>
+                      </tr>
+                    </tbody>
+                  </thead>
+            </table>
+            </div>
             <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -100,39 +202,7 @@
       </div>
     </div>
 
-            <!-- Modal search -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h2 class="text-center" class="modal-title" id="exampleModalLongTitle">Choose Your Doctor</h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                        <div id="table" class="table-responsive">
-                            <table id="doctor_data" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th width="60%">Doctor name</th>
-                                        <th width="30%">Time</th>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><a href="/channel" class="book"><button style="background-color: pink;">book </button></a></td>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-          </div>
+            
 
         </div>
     

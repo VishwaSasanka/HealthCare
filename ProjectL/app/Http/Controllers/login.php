@@ -15,12 +15,12 @@ class login extends Controller
         $roll=DB::table('all_users')->where('id',$request->id)->value('roll');
         if($password==$request->password){
             if($roll=="patient"){
-                $details=DB::table('patients')->where('Pat_id',$request->id)->first();
-                return view('blade-scafolding.patientpage')->with('det',$details)->with('messege',"");
+               
+                return redirect()->route('patpage',['c'=>$request->id]);
             }
             elseif($roll=="doctor"){
-                $details=DB::table('doctors')->where('Doctor_ID',$request->id)->first();
-                return view('blade-scafolding/doctorPage')->with('det',$details)->with('messege',"");
+                return redirect()->route('docpage',['c'=>$request->id]);
+               
             }
             elseif($roll=="pharmacist"){
                 $details=DB::table('pharmacists')->where('Phar_id',$request->id)->first();

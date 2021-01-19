@@ -6,19 +6,36 @@ use App\Http\Controllers\AppointController;
 
 
 Route::get('/', function () {
-    return view('blade-scafolding.home');
+  $c=DB::table('periods')->get();
+    return view('blade-scafolding.home')->with('c',$c);
 });
+/*Route::post('/ajax',[FrontendController::class,'ajax']);*/
 
 Route::get('/login',[FrontendController::class,'loginpage']);
 Route::get('/regi',[FrontendController::class,'Registrationpage']);
+Route::get('/regi_Book', function () {
+	$p=DB::table('patients')->get();
+    $np1=count($p)+1;
+    $id="Pat".$np1;
+    return view('blade-scafolding.registreAfterBook')->with('id',$id)->with('msg',"")->with('messege',"");
+});
 Route::get('/channel',[FrontendController::class,'channelDetails']);
-Route::get('/patpage',[FrontendController::class,'afterLoginPatientPage']);
-Route::get('/patRecord',[FrontendController::class,'patientRecordPage']);
+Route::get('/book/{id}/{patid}', 'Pat@book')->name('book');
+Route::get('booking/{c}/', 'FrontendController@booking')->name('booking');
+
+Route::get('patpage/{c}/', 'FrontendController@afterLoginPatientPage')->name('patpage');
+Route::get('docpage/{c}/', 'FrontendController@afterLoginDoctoPage')->name('docpage');
+
+
+Route::get('patRecord/{c}/', 'FrontendController@patientRecordPage')->name('patRecord');
+
 Route::post('/log','login@log');
 Route::get('addPrscptn/{c}/', 'FrontendController@addPrescriptionPage')->name('addPrscptn');
 Route::post('/savepres', 'doccontroller@prescript');
 Route::post('/register', 'Pat@register');
+Route::post('/hmreg', 'Pat@hmreg');
 Route::post('/appointment',[AppointController::class,'store']);
+Route::post('/docsearch', 'Pat@docsearch');
  
   /*  Doctor Page*/
 Route::get('/docpage',[FrontendController::class,'afterLoginDoctoPage']);
@@ -38,7 +55,6 @@ Route::get('/ttable', function () {
 /*  Pharmacy Page*/
 Route::get('/pharmPage',[FrontendController::class,'pharmasistPage']);
 /* End Pharmacy Page*/
-
 Route::get('/timeT',function(){
-    	return view('blade-scafolding.table');
+      return view('blade-scafolding.table');
     });

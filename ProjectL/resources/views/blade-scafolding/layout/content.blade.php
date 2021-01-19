@@ -18,15 +18,7 @@
       @yield('content')
       </div>
 
-      <footer id="footer" class="footer-area wow fadeIn">
-         @include('blade-scafolding.partials.footer')
-      </footer>
-
-      <div class="copyright-area wow fadeIn"  style="background:#C71585;">
-         @include('blade-scafolding.partials.copyright')
-      </div>
-      <!-- end copyrights -->
-
+   
       @include('blade-scafolding.partials.script')
    </body>
 </html>

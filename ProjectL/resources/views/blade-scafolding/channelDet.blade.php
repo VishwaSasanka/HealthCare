@@ -17,37 +17,28 @@
                             <h3 class="text-center text-info">Channel Details</h3>
 
                             <div class="">
-                                <label for="username" class="text-info">Doctor:</label>
+                                <label for="username" class="text-info">Doctor:{{$d->Doctor_Name}}</label>
                                 <a class="" href=""></a>
                             </div>
                             <div class="">
-                                <label for="username" class="text-info">Specialization:</label>
+                                <label for="username" class="text-info">Specialization:{{$d->Specialization}}</label>
                                 <a class="" href=""></a>
                             </div>
                             <div class="">
-                                <label for="username" class="text-info">Time:</label>
+                                <label for="username" class="text-info">Time:{{$d->Time}}</label>
                                 <a class="" href=""></a>
                             </div>
                             <div class="">
-                                <label for="username" class="text-info">App Date:</label>
+                                <label for="username" class="text-info">App Date:{{$d->Date}}</label>
                                 <a class="" href=""></a>
                             </div>
                             <div class="">
-                                <label for="username" class="text-info">App No:</label>
+                                <label for="username" class="text-info">App No:{{$d->Appointment_No}}</label>
                                 <a class="" href=""></a>
                             </div>
-                            <div class="">
-                                <label for="username" class="text-info">Patient:</label>
-                                <a class="" href=""></a>
-                            </div>
-                            <div class="">
-                                <label for="username" class="text-info">NIC:</label>
-                                <a class="" href=""></a>
-                            </div>
-                            <div class="">
-                                <label for="username" class="text-info">Phone Number:</label>
-                                <a class="" href=""></a>
-                            </div>
+                          
+                          
+                         
                             	
                             <div id="note">
                             	* Your Appointment is done.
@@ -55,7 +46,7 @@
                             
                         </form>
                             <div class="right" style="color: blue; margin-bottom: 10px;">
-                                <a href="/patpage"><h3 style="color: blue;"><span class="glyphicon glyphicon-eye-open"></span> View Profile</h3></a>
+                                <a href="{{route('patpage',$id)}}"><h3 style="color: blue;"><span class="glyphicon glyphicon-eye-open"></span> Go to Profile</h3></a>
                             </div>
                     </div>
                 </div>

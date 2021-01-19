@@ -14,15 +14,16 @@ class CreateAppointmentsTable extends Migration
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
-
+          
+            $table->id('Appointment_No');
+            $table->String('Period_ID');
+            $table->String('Pat_id')->nullable();
             $table->date('Date');
             $table->String('Time');
-            $table->String('NIC_No');
+            $table->String('NIC_No')->nullable();            ;
             $table->String('Doctor_Name');
             $table->String('Specialization');
-            $table->String('Appointment_No');
-
+           
             $table->timestamps();
         });
     }
