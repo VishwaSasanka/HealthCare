@@ -50,9 +50,52 @@ td{
 }
 #srch {
   color: white;
+  margin-top: 50px;
+}
+#search1{
+	position: absolute; 
+	margin-left: 280px; 
+	margin-top: 10px;
+}
+#search{
+	position: absolute; 
+	margin-left: 510px;
+}
+#inp{
+	width: 200px; 
+	height: 42px; 
+	border-radius: 20px; 
+	background-color: white; 
+	padding-left: 15px;
+}
+#searchbtn{
+	position: absolute; 
+	margin-left: 750px;
+	margin-top: 18px;
+	width: 100px;
+	background-color: lightblue;
+	color: black;
+}
+@media(max-width: 780px){
+	#search1{
+		margin-top: 60px;
+		margin-left: 0; 
+	}
+	#search{
+		margin-top: 100px;
+		margin-left: 0; 
+	}
+	#inp{
+		width: 250px;
+	}
+	#srch{
+		margin-top: 150px;
+	}
+	#searchbtn{
+		margin-top: 118px;
+		margin-left: 270px; 
 }
 </style>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
@@ -60,26 +103,36 @@ td{
 <div class="container">
 
     <!--search by docid or Specialization-->
-    <div class="serch-bar" class="text-left" style="position: absolute; width: 250px;">
-        <div id="custom-search-input" class="table-responsive">
-            <div class="input-group col-md-12">
-                <span class="input-group-btn">
-                    <button class="btn btn-info btn-lg" type="button">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </span>
-                <input type="text" class="form-control input-lg" placeholder="Doctor ID/Doctor Name" style="padding: 0 0 0 0;" />
-            </div>
-        </div>
-    </div>
-    <div style="position: absolute; margin-left: 300px; margin-top: 10px;">
-            <select style="width: 200px; height: 42px; border-radius: 20px; background-color: white; padding-left: 15px;">
-                <option selected> Specialization</option>
-                <option>Consultant</option>
-                <option>Cardiologist</option>
-            </select>
-    </div> 
-    <div id="srch" style="margin-top: 50px;" class="text-center">
+    <form>
+	    <div class="serch-bar" class="text-left" style="position: absolute; width: 250px;">
+	        <div id="custom-search-input" class="table-responsive">
+	            <div class="input-group col-md-12">
+	                <span class="input-group-btn">
+	                    <button class="btn btn-info btn-lg" type="button">
+	                    <i class="fa fa-search" aria-hidden="true"></i>
+	                    </button>
+	                </span>
+	                <input type="text" class="form-control input-lg" placeholder="Doctor ID/Doctor Name" style="padding: 0 0 0 0;" />
+	            </div>
+	        </div>
+	    </div>
+	    <div id="search1">
+	            <select id="inp">
+	                <option selected> Specialization</option>
+	                <option>Consultant</option>
+	                <option>Cardiologist</option>
+	            </select>
+	    </div> 
+	    <div id="search" class="form-group">
+	        <input id="inp" type="date" name="birthday" id="birthday" class="form-control" >
+	    </div>
+	    <button id="searchbtn" class="btn">go</button>
+    </form>
+    <br>
+    <!--End search by docid or Specialization-->
+
+    <!--search table -->
+    <div id="srch" class="text-center">
         <table class="table" style="width: 100%;">
             <thead>
                 <tr>
@@ -103,36 +156,17 @@ td{
             </tbody>
         </table>
     </div>
-    <!--search by docid-->
+    <!--search table -->
 
     <!--Time table-->
     <div class="text-center" style="color: blue; font-weight: bold; font-size: 27px; margin-top: 40px;">
         Time Table
     </div>
 
-    <div>
-        <button type="button" class="navbar-toggle collapsed" data-toggle='collapse' data-target="#collapsable-nav" aria-expand="false" style="color: black; border: 3px solid;">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar" style="background-color: black;"></span>
-            <span class="icon-bar" style="background-color: black;"></span>
-            <span class="icon-bar" style="background-color: black;"></span>
-        </button>
-    </div>
-    <div id="collapsable-nav" class="navbar-collapse collapse" class="header-info">
-        <ul class="nav navbar-nav" style="border-radius: 20px; background-color: #3355FF; width: 100%;">
-            <li><a href="#">Monday</a></li>
-            <li><a href="#">Tuesday</a></li>
-            <li><a href="#">Wednesday</a></li>
-            <li><a href="#">Thursday</a></li>
-            <li><a href="#">Friday</a></li>
-            <li><a href="#">Saturday</a></li>
-            <li><a href="#">Sunday</a></li>
-        </ul>
-    </div>
-
     <table class="table table-bordered" style="background-color: white; margin-top: 10px;">
         <thead>
           <tr>
+          	<th scope="col">Date</th>
             <th scope="col">Period Time</th>
             <th scope="col">Doctor ID</th>
             <th scope="col">Doctor Name</th>
